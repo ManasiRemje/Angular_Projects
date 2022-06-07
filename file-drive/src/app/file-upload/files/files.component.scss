@@ -1,0 +1,74 @@
+@import '../../../assets/styles/variables';
+
+.list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: $theme;
+
+    .logo {
+        width: 25%;
+        float: left;
+        margin-top: 0.2rem;
+        margin-left: 1rem;
+        margin-bottom: 0.2rem;
+        cursor: pointer;
+    }
+
+    .list__ele {
+        float: right;
+    }
+
+    .list_ele,
+    a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    .list__button {
+        margin: 1em;
+        border: none;
+        background-color: inherit;
+        color: white;
+        padding: 3px 2px;
+        font-size: 15px;
+        cursor: pointer;
+        align-self: flex-end;
+    }
+}
+
+.file-container{
+    width: 95%;
+    margin: 1rem;
+
+    .file-container__items{
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.06);
+        width: 100%;
+        display: flex;
+        padding: 0.8rem 1rem;
+        justify-content: space-between;
+    }
+    .file-container__items__name{
+        display: flex;
+        font-size: 18px;
+    }
+
+    .file-container__items__button{
+        display: flex;
+        border: none;
+        background-color: inherit;
+        cursor: pointer;
+        display: inline-block;
+        margin-right: 1.6rem;
+        font-size: 18px;
+    }
+}
+
+
+
+
+

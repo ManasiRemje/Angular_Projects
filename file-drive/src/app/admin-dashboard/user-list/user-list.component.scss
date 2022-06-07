@@ -1,0 +1,139 @@
+@import '../../../assets/styles/variables';
+
+.list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: $theme;
+
+    .logo {
+        width: 25%;
+        float: left;
+        margin-top: 0.2rem;
+        margin-left: 1rem;
+        margin-bottom: 0.2rem;
+        cursor: pointer;
+    } 
+
+    .list__ele {
+        float: right;
+    }
+
+    .list_ele,
+    a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    .list__button {
+        margin: 1em;
+        border: none;
+        background-color: inherit;
+        color: white;
+        padding: 3px 2px;
+        font-size: 15px;
+        cursor: pointer;
+        align-self: flex-end;
+    }
+}
+
+.status {
+    margin-bottom: 0.5rem;
+
+    .status__info{
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+    }
+}
+
+table, th, td {
+    border: 1px solid rgb(141, 141, 141);
+    border-collapse: collapse;
+    padding: 1rem;
+    border-style: groove;
+}
+
+table{
+    width: 100%;
+    text-align: center;
+}
+
+th {
+    background-color: aliceblue;
+}
+
+.user-container{
+    margin: 1rem;
+
+    .requests-container__table__button{
+        outline: none;
+        text-decoration: none;
+        border: none;
+        background-color: $theme;
+        color: white;
+        cursor: pointer;
+        padding: 0.6rem;
+        border-radius: 4px;
+    }
+
+    .requests-container__table__button:hover{
+        outline: none;
+        text-decoration: none;
+        border: none;
+        background-color: rgb(19, 19, 164);
+        color: white;
+        cursor: pointer;
+        padding: 0.6rem;
+        border-radius: 4px;
+    }
+
+    .form{
+        display: flex;
+        justify-content: center;
+    }
+
+    .user-container__label{
+        font-size: 18px;
+        margin-right: 0.5rem;
+        margin-top: 0.1rem;
+    }
+
+    .user-container__select{
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+      }
+      
+      .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+      }
+
+      .pagination a:hover:not(.active) {
+        background-color: #ddd;
+        border-radius: 5px;
+      }
+
+      .paginationButton{
+        background-color: $theme;
+        color: white;
+        padding: 0.2rem;
+        margin-left: 0.5rem;
+      }
+
+      .page{
+        margin-top:0.5rem;
+      }
+}

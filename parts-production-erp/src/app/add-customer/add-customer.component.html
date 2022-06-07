@@ -1,0 +1,43 @@
+<div class="container">
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+      <h2>Add Customer</h2>
+      <mat-form-field appearance="outline" color="primary" class="form-field">
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          mat-form-field-control
+          formControlName="name"
+        />
+        <mat-hint>Only characters allowed</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" color="primary" class="form-field">
+        <mat-label>Phone Number</mat-label>
+        <input
+          matInput
+          mat-form-field-control
+          formControlName="phoneNumber"
+        />
+        <mat-hint>Minimum 10 digits</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" color="primary" class="form-field">
+        <mat-label>Address</mat-label>
+        <input
+          matInput
+          mat-form-field-control
+          formControlName="address"
+        />
+      </mat-form-field>
+      
+      <button
+        class="submitBtn"
+        mat-raised-button
+        color="warn"
+        type="submit"
+        [disabled]="!customerForm.valid"
+      >
+        Submit
+      </button>
+    </form>
+  </div>  

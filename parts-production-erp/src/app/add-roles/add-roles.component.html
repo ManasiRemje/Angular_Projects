@@ -1,0 +1,84 @@
+<div class="container">
+    <form [formGroup]="roleForm" (ngSubmit)="onSubmit()">
+      <h2>Add Employee</h2>
+      <mat-form-field appearance="outline" color="primary" class="form-field">
+        <mat-label>Name</mat-label>
+        <input
+          required
+          matInput
+          mat-form-field-control
+          formControlName="name"
+        />
+        <mat-hint>Only characters allowed</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="primary" class="form-field">
+        <mat-label>Email</mat-label>
+        <input
+          required
+          matInput
+          mat-form-field-control
+          formControlName="email"
+          type="email"
+        />
+      </mat-form-field>
+      
+      <mat-form-field>
+        <mat-label>Role:</mat-label>
+        <mat-select
+          required
+          placeholder="Topic"
+          [(value)]="selectedValue1"
+          formControlName="role"
+          (selectionChange)="onSelectShow($event)"
+        >
+          <mat-option
+            *ngFor="let role of roles"
+            value="{{ role._id }}"
+            >{{ role.name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      
+      <div formGroupName="shift">
+      <mat-form-field *ngIf="showFields">
+        <mat-label>Shift:</mat-label>
+        <mat-select
+          placeholder="Topic"
+          [(value)]="selectedValue2"
+          formControlName="time"
+        >
+          <mat-option
+            *ngFor="let shift of shifts"
+            value="{{ shift.shift }}"
+            >{{ shift.shift }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field *ngIf="showFields">
+        <mat-label>Furnace ID:</mat-label>
+        <mat-select
+          placeholder="Topic"
+          [(value)]="selectedValue3"
+          formControlName="furnaceID"
+        >
+          <mat-option
+            *ngFor="let furnace of furnaces"
+            value="{{ furnace._id }}"
+            >{{ furnace.name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+     
+      <button
+        class="submitBtn"
+        mat-raised-button
+        color="warn"
+        type="submit"
+        [disabled]="!roleForm.valid"
+      >
+        Submit
+      </button>
+    </form>
+  </div>  

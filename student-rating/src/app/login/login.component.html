@@ -1,0 +1,37 @@
+<mat-card>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h2>Login</h2>
+      <mat-form-field appearance="legacy" color="accent" class="form-field">
+        <mat-label>Email</mat-label>
+        <input
+          required
+          matInput
+          mat-form-field-control
+          formControlName="email"
+          name="email"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" color="accent" class="form-field">
+        <mat-label>Password</mat-label>
+        <input
+          required
+          matInput
+          mat-form-field-control
+          formControlName="password"
+          name="password"
+          type="password"
+        />
+      </mat-form-field>
+
+      <button
+        class="submitBtn"
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!loginForm.valid"
+      >
+        Submit
+      </button>
+    </form>
+  </mat-card>

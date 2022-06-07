@@ -1,0 +1,108 @@
+<div class="container">
+  <mat-tab-group #tabRef (selectedTabChange)="logChange(tabRef.selectedIndex)">
+    <mat-tab label="Furnace">
+      <form [formGroup]="furnaceForm" (ngSubmit)="onSubmitAddFurnace()">
+        <mat-form-field appearance="outline" color="primary">
+          <mat-label>Furnace Name</mat-label>
+          <input
+            required
+            matInput
+            mat-form-field-control
+            formControlName="name"
+          />
+        </mat-form-field>
+        <button
+          class="submitBtn"
+          mat-raised-button
+          color="accent"
+          type="submit"
+          [disabled]="!furnaceForm.valid"
+        >
+          Submit
+        </button>
+      </form>
+    </mat-tab>
+
+    <mat-tab label="Storage">
+      <form [formGroup]="storageForm" (ngSubmit)="onSubmitAddStorage()">
+        <mat-form-field appearance="outline" color="primary">
+          <mat-label>Rack Name</mat-label>
+          <input
+            required
+            matInput
+            mat-form-field-control
+            formControlName="name"
+          />
+        </mat-form-field>
+        <button
+          class="submitBtn"
+          mat-raised-button
+          color="accent"
+          type="submit"
+          [disabled]="!storageForm.valid"
+        >
+          Submit
+        </button>
+      </form>
+    </mat-tab>
+
+    <mat-tab label="Product">
+      <form [formGroup]="productForm" (ngSubmit)="onSubmitAddProduct()">
+        <mat-form-field appearance="outline" color="primary">
+          <mat-label>Product Name</mat-label>
+          <input
+            required
+            matInput
+            mat-form-field-control
+            formControlName="name"
+          />
+          <mat-hint>Only characters allowed</mat-hint>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" color="primary">
+          <mat-label>Price</mat-label>
+          <input
+            required
+            matInput
+            mat-form-field-control
+            type="number"
+            formControlName="price"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="primary">
+          <mat-label>Material</mat-label>
+          <input
+            required
+            matInput
+            mat-form-field-control
+            formControlName="material"
+          />
+          <mat-hint>Only characters allowed</mat-hint>
+        </mat-form-field>
+        
+
+        <mat-form-field appearance="outline" color="primary">
+          <mat-label>Default Dimension Price</mat-label>
+          <input
+            required
+            matInput
+            mat-form-field-control
+            formControlName="defaultDimensionsPrice"
+          />
+        </mat-form-field>
+
+        <button
+          class="submitBtn"
+          mat-raised-button
+          color="accent"
+          type="submit"
+          [disabled]="!productForm.valid"
+        >
+          Submit
+        </button>
+      </form>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>

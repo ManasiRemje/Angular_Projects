@@ -1,0 +1,81 @@
+<main>
+  <header>
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <span class="app-name">Allingot</span>
+        <span class="example-spacer"></span>
+        <span class="example-spacer"></span>
+        <a
+          ><button mat-button color="success" (click)="logout()">
+            Logout
+          </button></a
+        >
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </header>
+  <section class="section">
+    <h2>POs with Payment Done</h2>
+    <div class="cards">
+      <div *ngFor="let po of pos; let i = index">
+        <div *ngIf="po.paymentStatus == true" class="card">
+          <mat-card class="card-container">
+            <div>
+              <mat-card-title> PO ID: {{ po._id }} </mat-card-title>
+              <mat-card-content>
+                <div *ngFor="let product of po.products" class="repeting">
+                  Product: {{ product.product.name }}<br />
+                  Dimensions: {{ product.dimensions }}<br />
+                  Quantity: {{ product.quantity }}<br />
+                  <div>Price: {{ product.product.price }}</div>
+                  <hr />
+                </div>
+                <div class="once">
+                  <div>Customer Name: {{ po.customerID.name }}</div>
+                  <div>Gross Total: {{ po.totalPrice }}</div>
+                  <div>Order Status: {{ po.orderStatus.name }}</div>
+                </div>
+              </mat-card-content>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <h2>POs with Payment not done</h2>
+    <div class="cards">
+      <div *ngFor="let po of pos; let i = index">
+        <div *ngIf="po.paymentStatus == false" class="card">
+          <mat-card class="card-container">
+            <div class="make-flex">
+              <mat-card-title> PO ID: {{ po._id }} </mat-card-title>
+              <mat-card-content>
+                <div *ngFor="let product of po.products" class="repeting">
+                  <div>Product: {{ product.product.name }}</div>
+                  <div>Dimensions: {{ product.dimensions }}</div>
+                  <div>Quantity: {{ product.quantity }}</div>
+                  <div>Price: {{ product.product.price }}</div>
+                  <hr />
+                </div>
+                <div class="once">
+                  <div>Customer Name: {{ po.customerID.name }}</div>
+                  <div>Gross Total: {{ po.totalPrice }}</div>
+                  <div>Order Status: {{ po.orderStatus.name }}</div>
+                </div>
+              </mat-card-content>
+              <button
+                class="submitBtn"
+                mat-raised-button
+                color="accent"
+                (click)="makePaymentDone(i)"
+                [disabled]="po.isPaymentDone"
+              >
+                Update Payment
+              </button>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,289 @@
+<div class="container">
+  <mat-tab-group #tabRef (selectedTabChange)="logChange(tabRef.selectedIndex)">
+    <mat-tab label="Filter">
+      <span class="spacemaker"></span>
+      <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <mat-label>Serviced By:</mat-label>
+          <mat-select
+            required
+            placeholder="Topic"
+            [(value)]="selectedValue1"
+            formControlName="serviceBy"
+            name="serviceBy"
+          >
+            <mat-option
+              *ngFor="let employee of employees"
+              value="{{ employee.id }}"
+              >{{ employee.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Services Availed:</mat-label>
+          <mat-select
+            placeholder="Topic"
+            [(value)]="selectedValue2"
+            formControlName="servicedAvailed"
+            name="servicedAvailed"
+            multiple
+          >
+            <mat-option
+              *ngFor="let service of services"
+              value="{{ service.id }}"
+              >{{ service.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Rating:</mat-label>
+          <mat-select
+            placeholder="Topic"
+            [(value)]="selectedValue3"
+            formControlName="overallAverage"
+            name="overallAverage"
+          >
+            <mat-option
+              *ngFor="let no of numbers; let i = index"
+              value="{{ numbers[i] }}"
+              >{{ numbers[i] }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>From</mat-label>
+          <input
+            matInput
+            [matDatepicker]="myFromDatepicker"
+            formControlName="fromDate"
+            name="fromDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="myFromDatepicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #myFromDatepicker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>To</mat-label>
+          <input
+            matInput
+            [matDatepicker]="myToDatepicker"
+            formControlName="toDate"
+            name="toDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="myToDatepicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #myToDatepicker></mat-datepicker>
+        </mat-form-field>
+
+        <button
+          class="submitBtn"
+          mat-raised-button
+          color="warn"
+          type="submit"
+          [disabled]="!filterForm.valid"
+        >
+          Filter
+        </button>
+        
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+            <ng-container matColumnDef="Overall-Rating">
+                <th mat-header-cell *matHeaderCellDef> Overall Experience Rating </th>
+                <td mat-cell *matCellDef="let element"> {{element.OverallExperienceRating}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Service-Rating">
+                <th mat-header-cell *matHeaderCellDef> Service Rating </th>
+                <td mat-cell *matCellDef="let element"> {{element.ServiceRating}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Ambience-Rating">
+                <th mat-header-cell *matHeaderCellDef> Ambience Rating </th>
+                <td mat-cell *matCellDef="let element"> {{element.ambienceRating}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Cleanliness-Rating">
+                <th mat-header-cell *matHeaderCellDef> Cleanliness Rating </th>
+                <td mat-cell *matCellDef="let element"> {{element.cleanlinessRating}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Comments">
+                <th mat-header-cell *matHeaderCellDef> Comments </th>
+                <td mat-cell *matCellDef="let element"> {{element.comments}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Created-At">
+                <th mat-header-cell *matHeaderCellDef> Created At </th>
+                <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Overall-Average">
+                <th mat-header-cell *matHeaderCellDef> Overall Average </th>
+                <td mat-cell *matCellDef="let element"> {{element.overallAverage}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Customer-Name">
+                <th mat-header-cell *matHeaderCellDef> Customer Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.customerName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Customer-Age">
+                <th mat-header-cell *matHeaderCellDef> Customer Age </th>
+                <td mat-cell *matCellDef="let element"> {{element.customerAge}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Customer-Email">
+                <th mat-header-cell *matHeaderCellDef> Customer Email </th>
+                <td mat-cell *matCellDef="let element"> {{element.customerEmail}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[1, 2, 5, 10, 20]" showFirstLastButtons>
+        </mat-paginator>
+
+      </form>
+    </mat-tab>
+
+    <!-- ---------------------------------------------------------------------------- -->
+    <mat-tab label="Report">
+      <mat-card>
+        <mat-card-title> Ambience Rating </mat-card-title>
+        <mat-card-content>
+          <mat-icon color="custom-color">grade</mat-icon>
+          {{ "ratings.ambienceAverage" }}
+        </mat-card-content>
+        <mat-card-title> Cleanliness Rating </mat-card-title>
+        <mat-card-content>
+          <mat-icon color="custom-color">grade</mat-icon>
+          {{ ratings.cleanlinessAverage }}
+        </mat-card-content>
+        <mat-card-title> Service Rating </mat-card-title>
+        <mat-card-content>
+          <mat-icon color="custom-color">grade</mat-icon>
+          {{ ratings.ServiceAverage }}
+        </mat-card-content>
+        <mat-card-title> Overall Experience Rating </mat-card-title>
+        <mat-card-content>
+          <mat-icon color="custom-color">grade</mat-icon>
+          {{ ratings.OverallExpereinceAverage }}
+        </mat-card-content>
+        <mat-card-title> Overall Average Rating </mat-card-title>
+        <mat-card-content>
+          <mat-icon color="custom-color">grade</mat-icon>
+          {{ ratings.overallAverage }}
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+    <!-- ---------------------------------------------------------------------------- -->
+    <mat-tab label="Employee Register">
+      <span class="spacemaker"></span>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmitRegister()">
+        <mat-form-field appearance="legacy" color="accent" class="form-field">
+          <mat-label>Name</mat-label>
+          <input
+            required
+            matInput
+            mat-form-field-control
+            formControlName="customerName"
+            name="customerName"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" color="accent" class="form-field">
+          <mat-label>Age</mat-label>
+          <input
+            required
+            matInput
+            mat-form-field-control
+            formControlName="customerAge"
+            name="customerAge"
+            type="number"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" color="accent" class="form-field">
+          <mat-label>Email</mat-label>
+          <input
+            required
+            matInput
+            mat-form-field-control
+            type="email"
+            formControlName="customerEmail"
+            name="customerEmail"
+          />
+        </mat-form-field>
+        <mat-form-field color="accent" class="form-field">
+          <mat-label>Password</mat-label>
+          <input
+            required
+            matInput
+            mat-form-field-control
+            formControlName="password"
+            name="password"
+            type="password"
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Role:</mat-label>
+          <mat-select
+            required
+            placeholder="Topic"
+            [(value)]="selectedValue3"
+            formControlName="userRole"
+            name="userRole"
+          >
+            <mat-option value="admin">Admin</mat-option>
+            <mat-option value="user">User</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button
+          class="submitBtn"
+          mat-raised-button
+          color="warn"
+          type="submit"
+          [disabled]="!filterForm.valid"
+        >
+          Register
+        </button>
+      </form>
+    </mat-tab>
+    <!-- ------------------------------------------------------------------- -->
+    <mat-tab label="Employee Register">
+      <span class="spacemaker"></span>
+      <form [formGroup]="serviceForm" (ngSubmit)="onSubmitAddService()">
+        <mat-form-field appearance="legacy" color="accent" class="form-field">
+          <mat-label>Service Name</mat-label>
+          <input
+            required
+            matInput
+            mat-form-field-control
+            type="text"
+            formControlName="serviceName"
+            name="serviceName"
+          />
+        </mat-form-field>
+
+        <button
+          class="submitBtn"
+          mat-raised-button
+          color="warn"
+          type="submit"
+          [disabled]="!serviceForm.valid"
+        >
+          Register
+        </button>
+      </form>
+    </mat-tab>
+  </mat-tab-group>
+</div>

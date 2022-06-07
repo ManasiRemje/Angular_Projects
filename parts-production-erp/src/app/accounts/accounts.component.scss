@@ -1,0 +1,80 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    .card {
+      max-width: 375px;
+      margin: 1rem;
+    }
+  }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.app-name {
+  font-family: "Lobster", cursive;
+  font-size: xx-large;
+}
+
+.app-name:hover {
+  cursor: pointer;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-success {
+  color: #fff;
+}
+
+.mat-toolbar {
+  background: rgb(5, 62, 148);
+  color: #fff;
+  // min-width: 100vw;
+}
+
+mat-card-content {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+
+mat-card-title {
+  font-family: "Roboto", sans-serif;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.card-container {
+  background: rgb(232, 232, 245);
+  padding: 10px;
+  color: rgb(22, 8, 83);
+  display: flex;
+  justify-content: space-between;
+}
+
+.submitBtn {
+  margin: 0 auto;
+}
+
+mat-card-content {
+  margin-bottom: 1rem;
+}
+
+h2 {
+  margin: 1rem;
+}
+
+.make-flex {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,18 @@
+table {
+    margin-top: 5rem;
+}
+
+th,td {
+    min-width: 5rem;
+}
+
+.mat-column-Product {
+    border-right: 1px solid rgb(28, 28, 102);
+    padding-right: 24px;
+    text-align: center;
+  }
+
+  .mat-column-Unit-Price {
+    padding-left: 24px;
+    text-align: center;
+  }

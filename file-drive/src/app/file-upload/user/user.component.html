@@ -1,0 +1,144 @@
+<main>
+  <header>
+    <ul class="list">
+      <li class="logo">
+        <img src="../../../assets/images/CabinetP.png" alt="Logo" class="logo"/>
+      </li>
+      <li class="list__ele">
+        <button class="list__button" (click)="logout()">
+          <i class="fa-solid fa-power-off"></i> Logout
+        </button>
+      </li>
+      <li class="list__ele">
+        <button class="list__button" (click)="openNotificationPopup()">
+          <i class="fa-solid fa-bell"></i> Requests
+        </button>
+      </li>
+      <li class="list__ele">
+        <button class="list__button" (click)="openSettingsPopup()">
+          <i class="fa-solid fa-gear"></i> Settings
+        </button>
+      </li>
+      <li class="list__ele">
+        <button class="list__button" (click)="openFilePopup()">
+          <i class="fa-solid fa-plus"></i> Files
+        </button>
+      </li>
+      <li class="list__ele">
+        <button class="list__button" (click)="openFolderPopup()">
+          <i class="fa-solid fa-plus"></i> Folder
+        </button>
+      </li>
+    </ul>
+  </header>
+  <section>
+    <app-popup *ngIf="isFolderVisible">
+      <form [formGroup]="addFolderForm" (ngSubmit)="onFolderSubmit()">
+        <app-inputs
+          [required]="true"
+          for="folder"
+          id="folder"
+          type="text"
+          name="folder"
+          [formControl]="folderName"
+          label="Enter Folder Name"
+        ></app-inputs>
+        <app-button type="submit">Create</app-button>
+      </form>
+    </app-popup>
+
+    <app-popup *ngIf="isFileVisible">
+      <form [formGroup]="addFileForm" (ngSubmit)="onFileSubmit($event)" enctype="multipart/form-data">
+        <div class="form__fields">
+          <label class="select__label">Select Folder</label>
+          <select name="folder" id="folder" formControlName="folder">
+            <option
+              class="select__option"
+              *ngFor="let folder of folders"
+              value="{{ folder.folderName }}"
+            >
+              {{ folder.folderName }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form__fields">
+          <app-inputs
+            [required]="true"
+            for="file"
+            id="file"
+            type="file"
+            name="file"
+            [formControl]="fileName"
+            label="Enter File Name"
+            (change)="onFileSelected($event)"
+          ></app-inputs>
+        </div>
+        <app-button type="submit">Create</app-button>
+      </form>
+    </app-popup>
+
+    <app-popup *ngIf="isSettingsVisible">
+      <div class="status">
+        <h3>Current Configuration</h3>
+        <hr/>
+        <div class="status__info">
+          <h4>Limits:</h4>
+          <p>Storage Size: {{ config.configuration.maxFileSize }} Bytes</p>
+          <p>No of Files: {{ config.configuration.maxFileCount }}</p>
+        </div>
+        <hr/>
+        <div class="status__info">
+          <h4>Current Storage Used:</h4>
+          <p>Storage Size: {{ config.configuration.currentCabinetSize }} Bytes</p>
+          <p>No of Files: {{ config.configuration.currentFileCount }}</p>
+        </div>
+      </div>
+
+      <h3>Request To Change Limit</h3>
+      <hr/>
+      <form [formGroup]="settingsForm" (ngSubmit)="onSettingsSubmit()">
+        <div class="form__fields">
+          <app-inputs
+            [required]="true"
+            for="maxFileSize"
+            id="maxFileSize"
+            type="number"
+            name="maxFileSize"
+            [formControl]="maxFileSize"
+            label="Enter Total Storage (in Bytes)"
+            [formGroup]="settingsForm"
+          >
+          </app-inputs>
+        </div>
+        <div class="form__fields">
+          <app-inputs
+            [required]="true"
+            for="maxFileCount"
+            id="maxFileCount"
+            type="number"
+            name="maxFileCount"
+            [formControl]="maxFileCount"
+            label="Enter No. of Files"
+            [formGroup]="settingsForm"
+          >
+          </app-inputs>
+        </div>
+        <app-button type="submit">Request</app-button>
+      </form>
+    </app-popup>
+
+    <app-popup *ngIf="isNotification">
+      <div class="request">
+        <h3>Request</h3>
+        <hr>
+        <div class="request__info" *ngFor="let config of changeConfigTo">
+          <p class="request__info__p">Storage Size: {{ config.request.changeConfigTo.maxFileSize }}</p>
+          <p class="request__info__p">No of Files: {{ config.request.changeConfigTo.maxFileCount }}</p>
+          <p class="request__info__p">Status: {{ config.request.status }}</p>
+        </div>
+      </div>
+    </app-popup>
+    <router-outlet></router-outlet>
+  </section>
+</main>

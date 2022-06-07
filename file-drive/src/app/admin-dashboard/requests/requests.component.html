@@ -1,0 +1,104 @@
+<main>
+  <header>
+    <span class="example-spacer"></span>
+    <ul class="list">
+      <li class="logo">
+        <img
+          src="../../../assets/images/CabinetP.png"
+          alt="Logo"
+          class="logo"
+        />
+      </li>
+      <li class="list__ele">
+        <button class="list__button" (click)="logout()">
+          <i class="fa-solid fa-power-off"></i> Logout
+        </button>
+      </li>
+      <li class="list__ele">
+        <button class="list__button" (click)="routeToUserList()">
+          <i class="fa-solid fa-list"></i> User List
+        </button>
+      </li>
+    </ul>
+  </header>
+  <section>
+    <div class="requests-container">
+      <form
+        class="filterForm"
+        [formGroup]="filterForm"
+        (ngSubmit)="onFilterSubmit()"
+      >
+        <label class="filterForm__label" for="status">Filter By Status: </label>
+        <select
+          class="filterForm__select"
+          name="status"
+          id="status"
+          formControlName="status"
+        >
+          <option
+            class="filterForm__select__options"
+            *ngFor="let status of statusAll"
+            value="{{ status }}"
+          >
+            {{ status }}
+          </option>
+        </select>
+        <div class="filterForm__button">
+          <app-button type="submit">Filter</app-button>
+        </div>
+      </form>
+
+      <table class="requests-container__table">
+        <tr class="requests-container__table__row">
+          <th>User Name</th>
+          <th>Requested File Size</th>
+          <th>Requested No. of Files</th>
+          <th>Status</th>
+        </tr>
+        <tr
+          *ngFor="let request of requests"
+          class="requests-container__table__row"
+        >
+          <td>{{ request?.name }}</td>
+          <td>{{ request?.request?.changeConfigTo?.maxFileSize }} Bytes</td>
+          <td>{{ request?.request?.changeConfigTo?.maxFileCount }}</td>
+          <td>
+            <button
+              (click)="approveRequest(request._id)"
+              [disabled]="request?.request?.status != 'Pending'"
+              class="requests-container__table__button"
+            >
+              {{ request?.request?.status }}
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <hr />
+    <div class="requests-container">
+      <form [formGroup]="pageSizeForm" class="form" (ngSubmit)="setPageSize()">
+        <label for="records" class="requests-container__label"
+          >No. of records:</label
+        >
+        <select
+          class="requests-container__select"
+          name="records"
+          id="records"
+          formControlName="pageSize"
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+        </select>
+        <button type="submit" class="paginationButton">set</button>
+      </form>
+      <div class="pagination">
+        <a (click)="paginator('back')">&laquo;</a>
+        <p class="page">{{ pageNumber }}</p>
+        <a (click)="paginator('next')">&raquo;</a>
+      </div>
+    </div>
+  </section>
+</main>

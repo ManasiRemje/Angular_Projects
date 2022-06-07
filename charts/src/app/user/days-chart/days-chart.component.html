@@ -1,0 +1,29 @@
+<main>
+    <header>
+        <span class="example-spacer"></span>
+    <ul class="list">
+      <li class="logo">
+        <img
+          src="../../../assets/images/Chart.png"
+          alt="Logo"
+          class="logo"
+        />
+      </li>
+      <li class="list__ele">
+        <button class="list__button" (click)="logout()">
+          <i class="fa-solid fa-power-off"></i> Logout
+        </button>
+      </li>
+      <li class="list__ele">
+        <button class="list__button" (click)="routeToYearlyChart()">
+            <i class="fa-solid fa-arrow-left"></i> 10 Years Chart
+        </button>
+      </li>
+    </ul>
+    </header>
+    <section class="graphSec">
+      <div class="graphSec__chart">
+        <canvas id="canvas">{{chart}}</canvas>
+      </div>
+    </section>
+</main>

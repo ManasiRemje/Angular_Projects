@@ -1,0 +1,54 @@
+<main>
+    <header>
+      <mat-toolbar>
+        <mat-toolbar-row>
+          <span class="app-name">Allingot</span>
+          <span class="example-spacer"></span>
+        <span class="example-spacer"></span>
+        <a><button mat-button color="success" (click)="logout()">Logout</button></a>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </header>
+    <section>
+      <mat-card *ngFor="let po of pos; let i=index" class="card-container">
+        <div>
+          <mat-card-title> PO ID: {{ po._id }} </mat-card-title>
+          <hr>
+          <mat-card-content *ngFor="let product of po.products">
+            Product: {{ product.product.name }}<br>
+            Dimensions: {{ product.dimensions }}<br>
+            Quantity: {{ product.quantity }}<br>
+            <hr>
+          </mat-card-content>
+        </div>
+        <div>
+            <form [formGroup]="rackForm">
+            <mat-form-field appearance="outline" color="primary">
+                <mat-label>Rack</mat-label>
+                <mat-select
+                  required
+                  placeholder="Topic"
+                  [(value)]="selectedValue1"
+                  formControlName="rackName"
+                >
+                  <mat-option
+                    *ngFor="let rack of racks"
+                    value="{{ rack._id }}"
+                    >{{ rack.name }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+          <button
+            class="submitBtn"
+            mat-raised-button
+            color="accent"
+            (click)="makeStored(i)"
+          >
+            Store
+          </button>
+        </form>
+        </div>
+      </mat-card>
+    </section>
+  </main>
+  

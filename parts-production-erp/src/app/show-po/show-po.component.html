@@ -1,0 +1,20 @@
+<div class="card-container">
+<mat-card *ngFor="let po of pos; let i = index" class="card">
+    <div>
+      <mat-card-title> PO ID: {{ po._id }} </mat-card-title>
+      <mat-card-content>
+        <div *ngFor="let product of po.products" class="repeting">
+          <div>Product: {{ product.product.name }}</div>
+          <div>Dimensions: {{ product.dimensions }}</div>
+          <div>Quantity: {{ product.quantity }}</div>
+          <hr />
+        </div>
+        <div class="once">
+          <div>Customer Name: {{ po.customerID.name }}</div>
+          <div>Gross Total: {{ po.totalPrice }}</div>
+          <div>Order Status: {{po.orderStatus.name}}</div>
+        </div>
+      </mat-card-content>
+    </div>
+  </mat-card>
+</div>

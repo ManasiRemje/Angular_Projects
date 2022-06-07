@@ -1,0 +1,120 @@
+<main>
+  <header>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span class="app-name">InternGrad</span>
+        <span class="example-spacer"></span>
+        <a
+          ><button mat-button color="success" (click)="logout()">
+            Logout
+          </button></a
+        >
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </header>
+  <section>
+    <mat-card>
+      <form [formGroup]="addTrainerForm" (ngSubmit)="onSubmitAddTrainer()">
+        <h2>Add Trainer</h2>
+
+        <mat-form-field appearance="legacy" color="accent" class="form-field">
+          <mat-label>Name</mat-label>
+          <input
+            required
+            matInput
+            mat-form-field-control
+            formControlName="name"
+            name="name"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" color="accent" class="form-field">
+          <mat-label>Age</mat-label>
+          <input
+            required
+            matInput
+            mat-form-field-control
+            formControlName="age"
+            name="age"
+            type="number"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" color="accent" class="form-field">
+          <mat-label>Email</mat-label>
+          <input
+            required
+            matInput
+            mat-form-field-control
+            type="email"
+            formControlName="email"
+            name="email"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" color="accent" class="form-field">
+          <mat-label>Password</mat-label>
+          <input
+            required
+            matInput
+            mat-form-field-control
+            formControlName="password"
+            name="password"
+            type="password"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>Track:</mat-label>
+            <mat-select
+              placeholder="Topic"
+              [(value)]="selectedTrack"
+              formControlName="assignedTrack"
+            >
+              <mat-option
+                *ngFor="let track of tracksReceived"
+                value="{{ track._id }}"
+                >{{ track.track }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button
+          class="submitBtn"
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!addTrainerForm.valid"
+        >
+          Submit
+        </button>
+      </form>
+    </mat-card>
+
+    <mat-card>
+      <form [formGroup]="addTrackForm" (ngSubmit)="onSubmitAddTrack()">
+        <h2>Add Track</h2>
+        <mat-form-field appearance="legacy" color="accent" class="form-field">
+          <mat-label>Track Name</mat-label>
+          <input
+            required
+            matInput
+            mat-form-field-control
+            formControlName="track"
+            name="track"
+          />
+        </mat-form-field>
+
+        <button
+          class="submitBtn"
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!addTrackForm.valid"
+        >
+          Submit
+        </button>
+      </form>
+    </mat-card>
+  </section>
+</main>

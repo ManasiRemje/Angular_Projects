@@ -1,0 +1,31 @@
+<main>
+  <div class="p-6 mt-12 w-[32rem] mx-auto shadow-lg flex items-center space-x-4 flex-col">
+    <h4 class="m-4 text-md font-medium text-gray-700">You will receive an email to reset your password shortly</h4>
+    <hr class="w-[24rem]">
+    <div>
+      <form [formGroup]="requestResetForm" (ngSubmit)="onSubmit()">
+        <div>
+          <app-inputs
+          [required]="true"
+          for="email"
+          id="email"
+          type="email"
+          name="email"
+          [formControl]="email"
+          label="Email"
+        ></app-inputs>
+        <div *ngIf="(email.invalid && email.touched) || email.dirty" class="text-purple-400 text-xs">
+          <p *ngIf="email.errors?.['required']">*Email is required</p>
+          <p *ngIf="email.errors?.['email']">*Enter a valid email</p>
+        </div>
+        </div>
+  
+        <div class="card__container__requestResetForm__fields">
+            <app-button [buttonName]="requestResetButtonName"> Send </app-button>
+        </div>
+  
+      </form>
+    </div>
+  </div>
+  
+</main>

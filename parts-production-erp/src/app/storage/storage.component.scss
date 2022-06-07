@@ -1,0 +1,59 @@
+// @import url('https://fonts.googleapis.com/css2?family=Hurricane&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.app-name {
+    font-family: 'Lobster', cursive;
+    font-size: xx-large;
+}
+
+.app-name:hover {
+    cursor: pointer;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.mat-success {
+    color: #fff;
+}
+
+.mat-toolbar {
+    background: rgb(5, 62, 148);
+    color: #fff
+}
+
+mat-card-content {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+mat-card-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.card-container {
+    background: rgb(232, 232, 245);
+    padding: 10px;
+    color: rgb(22, 8, 83);
+    display: flex;
+    justify-content: space-between;
+}
+
+mat-card {
+    margin: 1.5rem;
+}
+
+.submitBtn {
+    margin-right: 2rem;
+    margin-top: 5rem;
+    margin-left: 1rem;
+}
+
+mat-card-content {
+    margin-bottom: 1rem;
+}

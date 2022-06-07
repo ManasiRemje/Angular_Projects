@@ -1,0 +1,30 @@
+<main>
+  <header>
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <span class="app-name">Allingot</span>
+        <span class="example-spacer"></span>
+        <a routerLink="/admin/roles" routerLinkactive="active"
+          ><button mat-button color="success">Assign Roles</button></a
+        >
+        <a routerLink="/admin/assets" routerLinkactive="active"
+          ><button mat-button color="success">Assets</button></a
+        >
+        <a routerLink="/admin/customer" routerLinkactive="active"
+          ><button mat-button color="success">Customer</button></a
+        >
+        <a routerLink="/admin/products" routerLinkactive="active"
+          ><button mat-button color="success">Products</button></a
+        >
+        <a routerLink="/admin/POs" routerLinkactive="active"
+          ><button mat-button color="success">POs</button></a
+        >
+        <a><button mat-button color="success" (click)="logout()">Logout</button></a
+        >
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </header>
+  <section>
+    <router-outlet></router-outlet>
+  </section>
+</main>

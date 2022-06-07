@@ -1,0 +1,73 @@
+<mat-card>
+    <h3>Name: {{name}}</h3>
+    <h3>Age: {{age}}</h3>
+    <h3>Email: {{email}}</h3>
+</mat-card>
+
+<mat-card>
+  <form [formGroup]="updateRatingForm" (ngSubmit)="onSubmit()">
+    <h2>Enter Updated Rating</h2>
+
+    <mat-form-field appearance="legacy" color="accent" class="form-field">
+      <mat-label>Logic:</mat-label>
+      <mat-select
+        placeholder="Topic"
+        [(value)]="logicRating"
+        formControlName="logicalRating"
+      >
+        <mat-option *ngFor="let rating of ratingPossible" value="{{ rating }}"
+          >{{ rating }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy" color="accent" class="form-field">
+      <mat-label>Communication:</mat-label>
+      <mat-select
+        placeholder="Topic"
+        [(value)]="communicationRating"
+        formControlName="communicationRating"
+      >
+        <mat-option *ngFor="let rating of ratingPossible" value="{{ rating }}"
+          >{{ rating }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy" color="accent" class="form-field">
+      <mat-label>Assignment:</mat-label>
+      <mat-select
+        placeholder="Topic"
+        [(value)]="assignmentRating"
+        formControlName="assignmentRating"
+      >
+        <mat-option *ngFor="let rating of ratingPossible" value="{{ rating }}"
+          >{{ rating }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy" color="accent" class="form-field">
+      <mat-label>Proactiveness:</mat-label>
+      <mat-select
+        placeholder="Topic"
+        [(value)]="proactivenessRating"
+        formControlName="proactivenessRating"
+      >
+        <mat-option *ngFor="let rating of ratingPossible" value="{{ rating }}"
+          >{{ rating }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button
+      class="submitBtn"
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!updateRatingForm.valid"
+    >
+      Submit
+    </button>
+  </form>
+</mat-card>

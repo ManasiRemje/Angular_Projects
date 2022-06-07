@@ -1,0 +1,107 @@
+<mat-card>
+  <form [formGroup]="ratingForm" (ngSubmit)="onSubmit()">
+    <h2>Student Rating</h2>
+    <mat-form-field appearance="legacy" color="accent" class="form-field">
+      <mat-label>Name</mat-label>
+      <input
+        required
+        matInput
+        mat-form-field-control
+        formControlName="name"
+        name="name"
+        pattern="[a-zA-Z ]*"
+      />
+      <mat-hint>{{ name?.errors | json }}</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy" color="accent" class="form-field">
+      <mat-label>Age</mat-label>
+      <input
+        required
+        matInput
+        mat-form-field-control
+        formControlName="age"
+        name="age"
+        type="number"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="legacy" color="accent" class="form-field">
+      <mat-label>Email</mat-label>
+      <input
+        required
+        matInput
+        mat-form-field-control
+        type="email"
+        formControlName="email"
+        name="email"
+      />
+    </mat-form-field>
+
+    <label>Logic:</label>
+    <mat-radio-group
+      formControlName="logicalRating"
+      name="logicalRating"
+      required
+    >
+      <mat-radio-button *ngFor="let rating of ratingPossible" [value]="rating">
+        {{ rating }}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <label>Communication:</label>
+    <mat-radio-group
+      formControlName="communicationRating"
+      name="communicationRating"
+      required
+    >
+      <mat-radio-button *ngFor="let rating of ratingPossible" [value]="rating">
+        {{ rating }}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <label>Assignment:</label>
+    <mat-radio-group
+      formControlName="assignmentRating"
+      name="assignmentRating"
+      required
+    >
+      <mat-radio-button *ngFor="let rating of ratingPossible" [value]="rating">
+        {{ rating }}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <label>Proactiveness:</label>
+    <mat-radio-group
+      formControlName="proactivenessRating"
+      name="proactivenessRating"
+      required
+    >
+      <mat-radio-button *ngFor="let rating of ratingPossible" [value]="rating">
+        {{ rating }}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field appearance="outline" color="primary">
+      <mat-label>Track:</mat-label>
+      <mat-select
+        placeholder="Topic"
+        [(value)]="selectedTrack"
+        formControlName="assignedTrack"
+      >
+        <mat-option *ngFor="let track of tracksReceived" value="{{ track._id }}"
+          >{{ track.track }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button
+      class="submitBtn"
+      mat-raised-button
+      color="warn"
+      type="submit"
+      [disabled]="!ratingForm.valid"
+    >
+      Submit
+    </button>
+  </form>
+</mat-card>

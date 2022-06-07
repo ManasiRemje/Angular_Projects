@@ -1,0 +1,42 @@
+<main>
+  <header class="flex justify-between bg-slate-100">
+    <div class="ml-4 mt-4">
+      <h1 class="font-title text-4xl text-purple-900 hover:cursor-pointer">Activity Tracker</h1>
+      <h2 class="font-subTitle text-2xl text-purple-800 hover:cursor-pointer">Ready! Set! Go!</h2>
+    </div>
+    <div
+      class="flex mr-10 mt-4 mb-3"
+    >
+      <button type="button"
+        class="w-28 h-10 mt-3 bg-violet-800 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 rounded-lg text-white" type="button" *ngIf="checkDate()" (click)="createNextCycle()">
+          Next Cycle
+      </button>
+      <button type="button" class="ml-5 font-subTitle text-3xl text-purple-800" (click)="logout()">
+        <i class="fa-solid fa-power-off text-lg"></i>
+          Logout
+      </button>
+    </div>
+  </header>
+
+  <section class="flex justify-evenly mt-10">
+            <button class="flex justify-center w-28 bg-violet-800 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 pt-2 pb-2 rounded-lg text-white" type="button"
+              (click)="getData(user.cycles[0]._id,user.cycles[0].subCycles[0]._id, 0)">
+                <p [class.underline]="staticurrentTab == 0">{{getFromDate(0)}} - {{getToDate(0)}}</p>
+              </button>
+
+              <button class="flex justify-center w-28 bg-violet-800 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 pt-2 pb-2 rounded-lg text-white" type="button"
+              (click)="getData(user.cycles[0]._id,user.cycles[0].subCycles[1]._id, 1)">
+                <p [class.underline]="staticurrentTab == 1">{{getFromDate(1)}} - {{getToDate(1)}}</p>
+              </button>
+                <button class="flex justify-center w-28 bg-violet-800 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 pt-2 pb-2 rounded-lg text-white" type="button"
+                (click)="getData(user.cycles[0]._id,user.cycles[0].subCycles[2]._id, 2)">
+                  <p [class.underline]="staticurrentTab == 2">{{getFromDate(2)}} - {{getToDate(2)}}</p>
+                </button>
+  </section>
+  
+  <section class="flex justify-evenly mt-10">
+    <app-categories category="Procedural"></app-categories>
+    <app-categories category="Documental"></app-categories>
+    <app-categories category="Clinical"></app-categories>
+  </section>
+</main>

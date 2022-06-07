@@ -1,0 +1,19 @@
+mat-card {
+    padding: 3rem 3rem;
+    display: block;
+    background-color: rgb(250, 246, 246);
+    justify-content: center;
+    margin-top: 8rem;
+}
+
+mat-form-field,
+label {
+  display: block;
+  margin-bottom: 1rem ;
+}
+
+.submitBtn {
+    margin-bottom: 0.5rem;
+    margin-left: 3rem;
+}
+

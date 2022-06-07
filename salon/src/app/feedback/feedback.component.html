@@ -1,0 +1,144 @@
+<div class="container">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <img src="../../assets/avatar.png" alt="avatar" width="100px" />
+    <h2>Feedback</h2>
+    <mat-form-field appearance="legacy" color="accent" class="form-field">
+      <mat-label>Name</mat-label>
+      <input
+        required
+        matInput
+        mat-form-field-control
+        formControlName="customerName"
+        name="customerName"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="legacy" color="accent" class="form-field">
+      <mat-label>Age</mat-label>
+      <input
+        required
+        matInput
+        mat-form-field-control
+        formControlName="customerAge"
+        name="customerAge"
+        type="number"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="legacy" color="accent" class="form-field">
+      <mat-label>Email</mat-label>
+      <input
+        required
+        matInput
+        mat-form-field-control
+        type="email"
+        formControlName="customerEmail"
+        name="customerEmail"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Serviced By:</mat-label>
+      <mat-select
+        required
+        placeholder="Topic"
+        [(value)]="selectedValue"
+        formControlName="serviceBy"
+        name="serviceBy"
+      >
+        <mat-option
+          *ngFor="let employee of employees"
+          value="{{ employee.id }}"
+          >{{ employee.name }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Services Availed:</mat-label>
+      <mat-select
+        placeholder="Topic"
+        [(value)]="selectedValue2"
+        formControlName="servicedAvailed"
+        name="servicedAvailed"
+        multiple
+      >
+        <mat-option
+          *ngFor="let service of services"
+          value="{{ service.id }}"
+          >{{ service.name }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+
+    <label>How did you like the ambience ?</label>
+    <mat-radio-group
+      required
+      formControlName="ambienceRating"
+      name="ambienceRating"
+    >
+      <mat-radio-button color="primary" [value]="1">1</mat-radio-button>
+      <mat-radio-button color="primary" [value]="2">2</mat-radio-button>
+      <mat-radio-button color="accent" [value]="3">3</mat-radio-button>
+      <mat-radio-button color="warn" [value]="4">4</mat-radio-button>
+      <mat-radio-button color="warn" [value]="5">5</mat-radio-button>
+    </mat-radio-group>
+
+    <label>How did you like the cleanliness?</label>
+    <mat-radio-group
+      required
+      formControlName="cleanlinessRating"
+      name="cleanlinessRating"
+    >
+      <mat-radio-button color="primary" [value]="1">1</mat-radio-button>
+      <mat-radio-button color="primary" [value]="2">2</mat-radio-button>
+      <mat-radio-button color="accent" [value]="3">3</mat-radio-button>
+      <mat-radio-button color="warn" [value]="4">4</mat-radio-button>
+      <mat-radio-button color="warn" [value]="5">5</mat-radio-button>
+    </mat-radio-group>
+
+    <label>How did you like the service?</label>
+    <mat-radio-group
+      required
+      formControlName="ServiceRating"
+      name="ServiceRating"
+    >
+      <mat-radio-button color="primary" [value]="1">1</mat-radio-button>
+      <mat-radio-button color="primary" [value]="2">2</mat-radio-button>
+      <mat-radio-button color="accent" [value]="3">3</mat-radio-button>
+      <mat-radio-button color="warn" [value]="4">4</mat-radio-button>
+      <mat-radio-button color="warn" [value]="5">5</mat-radio-button>
+    </mat-radio-group>
+
+    <label>How did you like the overall experience?</label>
+    <mat-radio-group
+      formControlName="OverallExpereinceRating"
+      name="OverallExpereinceRating"
+    >
+      <mat-radio-button color="primary" [value]="1">1</mat-radio-button>
+      <mat-radio-button color="primary" [value]="2">2</mat-radio-button>
+      <mat-radio-button color="accent" [value]="3">3</mat-radio-button>
+      <mat-radio-button color="warn" [value]="4">4</mat-radio-button>
+      <mat-radio-button color="warn" [value]="5">5</mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field appearance="legacy" color="primary" class="form-field">
+      <mat-label>Comments</mat-label>
+      <textarea
+        required
+        matInput
+        mat-form-field-control
+        type="textarea"
+        formControlName="comments"
+        name="comments"
+      ></textarea>
+    </mat-form-field>
+    
+    <button
+      class="submitBtn"
+      mat-raised-button
+      color="warn"
+      type="submit"
+      [disabled]="!registerForm.valid"
+    >
+      Submit
+    </button>
+  </form>
+</div>

@@ -1,0 +1,58 @@
+// mat-form-field {
+//     margin: 2rem;
+// }
+
+.parent {
+    position: relative;
+}
+
+.back-image {
+    height: 100vh;
+    background-image: url('../../assets/blue.png');
+    filter: blur(1px);
+    background-size: cover;
+    z-index: -2;
+}
+
+.login-image {
+    filter: blur(1px);
+}
+
+mat-form-field {
+    padding: 1rem;
+}
+
+mat-grid-list {
+    position: absolute;
+    top: 9%;
+    left: 10%;
+    right: 10%;
+    z-index: 2;
+}
+
+mat-card {
+    padding: 3.9rem 2rem;
+    display: inline-block;
+    background-color: rgb(250, 246, 246);
+}
+
+.card-cover {
+    width: 100%;
+    text-align:center;
+}
+
+.submit-btn{
+    padding-left: 5.1rem;
+    padding-right: 5.1rem;
+}
+
+.mat-custom-radius {
+    border-radius: 30px;
+}
+
+h3 {
+    margin-left: 1.1rem;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(56, 56, 138);
+}

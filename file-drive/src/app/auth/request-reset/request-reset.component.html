@@ -1,0 +1,26 @@
+<div class="card">
+    <img src="../../../assets/images/CabinetP.png" alt="Logo" class="logo" />
+    <h4>You will receive an email to reset your password shortly</h4>
+    <hr />
+    <div class="card__container">
+      <form class="card__container__requestResetForm" [formGroup]="requestResetForm" (ngSubmit)="onSubmit()">
+        <div class="card__container__requestResetForm__fields">
+          <app-inputs
+          [required]="true"
+          for="email"
+          id="email"
+          type="email"
+          name="email"
+          [formControl]="email"
+          label="Email"
+        ></app-inputs>
+        </div>
+  
+        <div class="card__container__requestResetForm__fields">
+            <app-button [buttonName]="requestResetButtonName"> Send </app-button>
+        </div>
+  
+      </form>
+    </div>
+  </div>
+  

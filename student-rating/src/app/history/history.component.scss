@@ -1,0 +1,19 @@
+table {
+  margin-top: 5rem;
+}
+
+th,td {
+  min-width: 5rem;
+}
+
+mat-card {
+  display: block;
+  background-color: rgb(250, 246, 246);
+  justify-content: center;
+  margin: 2rem;
+}
+
+mat-form-field,
+label {
+display: block;
+}

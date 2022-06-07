@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Hurricane&display=swap');
+
+main {
+    height: 100vh;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(45deg, rgb(220,218,242) 0%,rgb(238,238,238) 0%,rgb(234,234,234) 68%);
+}
+
+.app-name {
+    font-family: 'Hurricane', cursive;
+    font-size: xx-large;
+}
+
+.mat-success {
+    color: #fff;
+}
+
+.example-icon {
+    padding: 0 14px;
+}
+  
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.active {
+    background-color: antiquewhite;
+}

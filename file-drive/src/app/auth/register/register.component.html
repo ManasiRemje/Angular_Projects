@@ -1,0 +1,50 @@
+<div class="card">
+    <img src="../../../assets/images/CabinetP.png" alt="Logo" class="logo" />
+    <h3>Register Here</h3>
+    <hr />
+    <div class="card__container">
+      <form class="card__container__signUpForm" [formGroup]="signUpForm" (ngSubmit)="onSubmit()" >
+
+        <div class="card__container__signUpForm__fields">
+          <app-inputs
+          [required]="true"
+          for="name"
+          id="name"
+          type="text"
+          name="name"
+          [formControl]="name"
+          label="Name"
+        ></app-inputs>
+          </div>
+
+        <div class="card__container__signUpForm__fields">
+          <app-inputs
+          [required]="true"
+          for="email"
+          id="email"
+          type="email"
+          name="email"
+          [formControl]="email"
+          label="Email"
+        ></app-inputs>
+        </div>
+  
+        <div class="card__container__signUpForm__fields">
+          <app-inputs
+          [required]="true"
+          for="password"
+          id="password"
+          type="password"
+          name="password"
+          [formControl]="password"
+          label="Password"
+        ></app-inputs>
+        </div>
+  
+        <div class="card__container__signUpForm__fields">
+          <app-button>Sign Up!</app-button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

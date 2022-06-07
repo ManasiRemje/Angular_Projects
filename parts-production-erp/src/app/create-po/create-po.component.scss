@@ -1,0 +1,56 @@
+.container {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    background-color: rgb(248, 245, 245);
+    border: 2px solid rgb(22, 86, 224);
+    border-radius: 6px;
+    box-shadow: 1px 2px 4px 1px rgb(181, 181, 182);
+}
+
+mat-form-field,
+label {
+  display: block;
+}
+
+.submitBtn {
+    margin-bottom: 0.5rem;
+}
+
+.righBtn {
+  margin-left: 1rem;
+}
+
+.leftBtn, .righBtn{
+  margin-bottom: 2rem;
+}
+
+h3 {
+  color: rgb(22, 86, 224);
+  font-weight: bolder;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.app-name {
+    font-family: 'Lobster', cursive;
+    font-size: xx-large;
+}
+
+.app-name:hover {
+    cursor: pointer;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.mat-success {
+    color: #fff;
+}
+
+.mat-toolbar {
+    background: rgb(5, 62, 148);
+    color: #fff
+ }

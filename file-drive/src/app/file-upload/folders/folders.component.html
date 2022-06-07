@@ -1,0 +1,32 @@
+<div class="folder-container" (click)="removeMenu()">
+  <div
+    *ngFor="let folder of folders; let i = index"
+    class="folder-container__items"
+  >
+    <div>
+      <button
+        (dblclick)="routeToFiles(folder.folderName)"
+        (contextmenu)="onRightClick($event, i)"
+        class="folder-container__items__button"
+      >
+        <i class="fa-solid fa-folder fa-5x"></i>
+      </button>
+    </div>
+    <div class="folder-container__items__name">
+      <p>{{ folder.folderName }}</p>
+    </div>
+
+    <div class="menu" #menu>
+      <ul class="menu__list">
+        <li class="menu__list__item">
+          <button
+            class="menu__list__item_button"
+            (click)="deleteFolder(folder.folderName)"
+          >
+            Delete
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

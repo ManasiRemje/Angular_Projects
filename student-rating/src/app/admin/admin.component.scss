@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Moonrocks&display=swap');
+
+.app-name {
+    font-family: 'Rubik Moonrocks', cursive;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+mat-toolbar{
+    min-width: 100vw;
+}
+
+mat-form-field {
+  display: block;
+}
+
+.submitBtn {
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    margin-left: 25rem;
+}
+
+mat-card {
+    margin:2rem;
+}
+

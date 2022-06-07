@@ -1,0 +1,110 @@
+<main>
+  <header>
+    <span class="example-spacer"></span>
+    <ul class="list">
+      <li class="logo">
+        <img
+          src="../../../assets/images/CabinetP.png"
+          alt="Logo"
+          class="logo"
+        />
+      </li>
+      <li class="list__ele">
+        <button class="list__button" (click)="logout()">
+          <i class="fa-solid fa-power-off"></i> Logout
+        </button>
+      </li>
+      <li class="list__ele">
+        <button class="list__button" (click)="routeToRequest()">
+          <i class="fa-solid fa-bell"></i> Requests
+        </button>
+      </li>
+    </ul>
+  </header>
+  <section>
+    <p *ngIf="noUser">No current Users</p>
+    <div class="user-container">
+      <table class="user-container__table">
+        <tr class="user-container__table__row">
+          <th>User Name</th>
+          <th>Current File Size Limit</th>
+          <th>Current No. of Files Limit</th>
+          <th>Status</th>
+        </tr>
+        <tr *ngFor="let user of users" class="user-container__table__row">
+          <td>{{ user.name }}</td>
+          <td>{{ user.configuration.currentCabinetSize }}</td>
+          <td>{{ user.configuration.maxFileCount }}</td>
+          <td>
+            <button
+              (click)="showUser(user._id)"
+              class="requests-container__table__button"
+            >
+              <i class="fa-solid fa-id-badge fa-2x"></i>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <hr />
+    <div class="user-container">
+      <form [formGroup]="pageSizeForm" class="form" (ngSubmit)="setPageSize()">
+        <label for="records" class="user-container__label"
+          >No. of records:</label
+        >
+        <select
+          class="user-container__select"
+          name="records"
+          id="records"
+          formControlName="pageSize"
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+        </select>
+        <button type="submit" class="paginationButton">set</button>
+      </form>
+      <div class="pagination">
+        <a (click)="paginator('back')">&laquo;</a>
+        <p class="page">{{ pageNumber }}</p>
+        <a (click)="paginator('next')">&raquo;</a>
+      </div>
+    </div>
+
+    <app-popup *ngIf="isUserVisible">
+      <div class="status">
+        <h3>Current Configuration</h3>
+        <hr />
+        <div class="status__info">
+          <h4>Limits:</h4>
+          <p>File Size Limit: {{ oneUser?.configuration?.maxFileSize }}</p>
+          <p>No of Files Limit: {{ oneUser?.configuration?.maxFileSize }}</p>
+        </div>
+        <hr />
+        <div class="status__info">
+          <h4>Current Storage Used:</h4>
+          <p>Storage Size: {{ oneUser?.configuration?.currentCabinetSize }}</p>
+          <p>No of Files: {{ oneUser?.configuration?.currentFileCount }}</p>
+        </div>
+      </div>
+
+      <h3>Request To Change Limit</h3>
+      <hr />
+      <div *ngIf="oneUser.request.status == 'pending'">
+        <p>
+          Requested File Size Limit:
+          {{ oneUser?.request?.changeConfigTo?.maxFileSize }}
+        </p>
+        <p>
+          Requested No of Files Limit:
+          {{ oneUser?.request?.changeConfigTo?.maxFileCount }}
+        </p>
+      </div>
+      <div *ngIf="oneUser.request.status !== 'pending'">
+        <p>No request Pending</p>
+      </div>
+    </app-popup>
+  </section>
+</main>

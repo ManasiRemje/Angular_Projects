@@ -1,0 +1,55 @@
+<div class="card">
+  <img src="../../../assets/images/CabinetP.png" alt="Logo" class="logo" />
+  <h3>Login with your email</h3>
+  <hr />
+  <div class="card__container">
+    <form
+      class="card__container__loginForm"
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+    >
+    <div class="card__container__loginForm__fields">
+        <app-inputs
+          [required]="true"
+          for="email"
+          id="email"
+          type="email"
+          name="email"
+          [formControl]="email"
+          label="Email"
+        ></app-inputs>
+      </div>
+
+      <div class="card__container__loginForm__fields">
+        <app-inputs
+          [required]="true"
+          for="password"
+          id="password"
+          type="password"
+          name="password"
+          [formControl]="password"
+          label="Password"
+        ></app-inputs>
+      </div>
+
+      <!-- Forgot Password Button -->
+      <button
+        type="button"
+        class="card__container__loginForm__forgotButton"
+        (click)="routeForgotPassPage()"
+      >
+        Forgot Password
+      </button>
+
+      <div class="card__container__loginForm__fields">
+        <app-button type="submit">Login</app-button>
+      </div>
+
+      <h2><span>OR</span></h2>
+
+      <div class="card__container__loginForm__fields__signup">
+        <app-button type="button" (onClicked)="routeSignupPage()">Sign Up!</app-button>
+      </div>
+    </form>
+  </div>
+</div>

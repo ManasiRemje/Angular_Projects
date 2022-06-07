@@ -1,0 +1,43 @@
+<mat-card>
+  <h3>Name: {{name}}</h3>
+  <h3>Age: {{age}}</h3>
+  <h3>Email: {{email}}</h3>
+</mat-card>
+
+<table mat-table [dataSource]="history" class="mat-elevation-z8 demo-table">
+  <ng-container matColumnDef="Weeks">
+    <th mat-header-cell *matHeaderCellDef>Weeks</th>
+    <td mat-cell *matCellDef="let element; let i = index">Week {{ i + 1 }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Logical">
+    <th mat-header-cell *matHeaderCellDef>Logical</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.logicalRating }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Communication">
+    <th mat-header-cell *matHeaderCellDef>Communication</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.communicationRating }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Assignment">
+    <th mat-header-cell *matHeaderCellDef>Assignment</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.assignmentRating }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Proactiveness">
+    <th mat-header-cell *matHeaderCellDef>Proactiveness</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.proactivenessRating }}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

@@ -1,0 +1,54 @@
+<main>
+    <header>
+      <ul class="list">
+        <li class="logo">
+          <img src="../../../assets/images/CabinetP.png" alt="Logo" class="logo"/>
+        </li>
+        <li class="list__ele">
+          <button class="list__button" (click)="logout()">
+            <i class="fa-solid fa-power-off"></i> Logout
+          </button>
+        </li>
+        <li class="list__ele">
+          <button class="list__button" (click)="openFilePopup()">
+            <i class="fa-solid fa-plus"></i> Files
+          </button>
+        </li>
+        <li class="list__ele">
+            <button class="list__button" (click)="routeToFolders()">
+                <i class="fa-solid fa-right-to-bracket"></i> Back
+            </button>
+          </li>
+      </ul>
+    </header>
+    <section>
+        <app-popup *ngIf="isFileVisible">
+            <form [formGroup]="addFileForm" (ngSubmit)="onFileSubmit($event)" enctype="multipart/form-data">
+              <div class="form__fields">
+                <app-inputs
+                  [required]="true"
+                  for="file"
+                  id="file"
+                  type="file"
+                  name="file"
+                  [formControl]="fileName"
+                  label="Enter File Name"
+                  (change)="onFileSelected($event)"
+                ></app-inputs>
+              </div>
+              <app-button type="submit">Create</app-button>
+            </form>
+          </app-popup>
+
+        <div class="file-container">
+            <div *ngFor="let file of files" class="file-container__items">
+                <p class="file-container__items__name">{{file.fileName}}.{{file.fileType}}</p>
+                <div class="buttons">
+                    <button class="file-container__items__button" (click)="downloadFile(file.fileName)"><i class="fa-solid fa-download"></i></button>
+                    <button class="file-container__items__button" (click)="deleteFile(file.fileName)"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+</main>

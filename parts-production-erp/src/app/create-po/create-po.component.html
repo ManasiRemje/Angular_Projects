@@ -1,0 +1,112 @@
+<main>
+  <header>
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <span class="app-name">Allingot</span>
+        <span class="example-spacer"></span>
+        <span class="example-spacer"></span>
+        <a
+          ><button mat-button color="success" (click)="logout()">
+            Logout
+          </button></a
+        >
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </header>
+  <div class="container">
+    <form [formGroup]="poFG" (ngSubmit)="onSubmitAddPO()">
+      <h3>Generate PO</h3>
+      <mat-form-field appearance="outline" color="primary">
+        <mat-label>Customer Name</mat-label>
+        <mat-select
+          placeholder="Topic"
+          [(value)]="selectedValue1"
+          formControlName="customerID"
+        >
+          <mat-option
+            *ngFor="let customer of customers"
+            value="{{ customer._id }}"
+            >{{ customer.name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+
+      <div>
+        <section
+          formArrayName="products"
+          *ngFor="let product of productsControls; let i = index"
+        >
+          <div [formGroupName]="i">
+            <mat-form-field appearance="outline" color="primary">
+              <mat-label>Product:</mat-label>
+              <mat-select
+                placeholder="Topic"
+                [(value)]="selectedValue2"
+                formControlName="product"
+              >
+                <mat-option
+                  *ngFor="let product of productsReceived"
+                  value="{{ product._id }}"
+                  >{{ product.name }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" color="primary">
+              <mat-label>Quantity</mat-label>
+              <input
+                matInput
+                mat-form-field-control
+                type="number"
+                formControlName="quantity"
+                name="quantity{{ i }}"
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" color="primary">
+              <mat-label>Dimensions</mat-label>
+              <input
+                matInput
+                mat-form-field-control
+                formControlName="dimensions"
+                name="dimensions{{ i }}"
+              />
+            </mat-form-field>
+
+            <div class="addButton">
+              <button
+                mat-mini-fab
+                color="primary"
+                type="button"
+                (click)="addForm()"
+                class="leftBtn"
+              >
+                <mat-icon>add</mat-icon>
+              </button>
+
+              <button
+                *ngIf="i != 0"
+                mat-mini-fab
+                color="primary"
+                class="righBtn"
+                (click)="removeForm(i)"
+              >
+                <mat-icon>remove</mat-icon>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <button
+          class="submitBtn"
+          mat-raised-button
+          color="accent"
+          type="submit"
+          [disabled]="!poFG.valid"
+        >
+          Create
+        </button>
+      </div>
+    </form>
+  </div>
+</main>

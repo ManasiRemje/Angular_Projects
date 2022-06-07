@@ -1,0 +1,66 @@
+<main>
+  <header class="flex justify-between bg-slate-100">
+    <div class="ml-4 mt-4">
+      <h1 class="font-title text-4xl text-purple-900 hover:cursor-pointer">
+        Activity Tracker
+      </h1>
+      <h2 class="font-subTitle text-2xl text-purple-800 hover:cursor-pointer">
+        Ready! Set! Go!
+      </h2>
+    </div>
+    <div class="mr-10 mt-6 font-subTitle text-3xl text-purple-800">
+      <button type="button" (click)="routeToDashboard()">
+        <i class="fa-regular fa-circle-left"></i>
+        Go back
+      </button>
+    </div>
+  </header>
+  <section
+    class="p-6 mt-20 w-[32rem] mx-auto shadow-lg flex items-center space-x-4 flex-col"
+  >
+    <div class="mt-4">
+      <form [formGroup]="certificateForm" (ngSubmit)="onSubmit()">
+        <div>
+          <app-inputs
+            [required]="true"
+            for="file"
+            id="file"
+            type="file"
+            name="file"
+            [formControl]="file"
+            label="Upload Certificate"
+            (change)="onFileSelected($event)"
+          ></app-inputs>
+          <div
+            *ngIf="(file.invalid && file.touched) || file.dirty"
+            class="text-purple-400 text-xs"
+          >
+            <p *ngIf="file.errors?.['required']">*Name is required</p>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <app-inputs
+            [required]="true"
+            for="date"
+            id="date"
+            type="date"
+            name="date"
+            [formControl]="date"
+            label="Email"
+          ></app-inputs>
+          <div
+            *ngIf="(date.invalid && date.touched) || date.dirty"
+            class="text-purple-400 text-xs"
+          >
+            <p *ngIf="date.errors?.['required']">*Email is required</p>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <app-button>Submit Work!</app-button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>

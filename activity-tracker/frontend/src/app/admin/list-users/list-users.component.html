@@ -1,0 +1,96 @@
+<main>
+    <header class="flex justify-between bg-slate-100">
+        <div class="ml-4 mt-4">
+          <h1 class="font-title text-4xl text-purple-900 hover:cursor-pointer">Activity Tracker</h1>
+          <h2 class="font-subTitle text-2xl text-purple-800 hover:cursor-pointer">Ready! Set! Go!</h2>
+        </div>
+        <div
+          class="flex mr-10 mt-4 mb-3"
+        >
+          <button type="button" class="ml-5 font-subTitle text-3xl text-purple-800" (click)="logout()">
+            <i class="fa-solid fa-power-off text-lg"></i>
+              Logout
+          </button>
+        </div>
+      </header>
+      <section class="flex justify-center">
+        <div class="flex p-2 mt-4 shadow-lg w-[40rem] justify-center space-x-4">
+            <form [formGroup]="filterForm" (ngSubmit)="onSubmit()" class="flex justify-evenly">
+              <div class="flex justify-evenly w-[20rem]">
+                <label class="font-serif font-medium text-gray-700 mt-5" for="year">Filter By Year:</label>
+                <div class="flex-col">
+                    <input for="year"
+                    required
+                    class="flex h-10 mt-3 border-2 w-[10rem] p-2 rounded-md focus:outline-0 focus:border-4"
+                    id="year"
+                    type="number"
+                    name="year"
+                    formControlName="year"
+                >
+                  <div *ngIf="(year.invalid && year.touched) || year.dirty" class="text-purple-400 text-xs">
+                    <p *ngIf="year.errors?.['required']">*Year is required</p>
+                    <p *ngIf="year.errors?.['min']">*Min year 2000</p>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <button class="mt-3 mb-2 pt-2 pb-2 w-[10rem] flex justify-center rounded-md bg-purple-900 hover:bg-purple-800 text-white">Filter</button>
+              </div>
+            </form>
+          </div>
+      </section>
+      <section class="mt-6 ml-10 mr-10">
+          <table class="border border-slate-400 border-separate w-full text-center">
+              <thead>
+                <tr class="">
+                    <th class="border border-slate-400 p-3">User Name</th>
+                    <th class="border border-slate-400 p-3">Status</th>
+                    <th class="border border-slate-400 p-3">Block/Unblock</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users" class="">
+                    <td class="border border-slate-400 py-2">{{ user.name }}</td>
+                    <td class="border border-slate-400">{{ user.status }}</td>
+                    <td class="border border-slate-400">
+                      <p *ngIf="user.status == 'Blocked'">
+                        <button (click)="unblock(user.cycleId)" class="bg-purple-800 text-white rounded-md px-2 py-1 hover:bg-purple-400">Unblock</button>
+                      </p>
+                      <p *ngIf="user.status != 'Blocked'">
+                        <button (click)="block(user.cycleId)" class = "bg-purple-800 hover:bg-purple-400 text-white rounded-md px-2 py-1">Block</button>
+                      </p>
+                    </td>
+                  </tr>
+              </tbody>
+          </table>
+          <div class="bg-slate-100 flex justify-center py-2" *ngIf="length == 1">No users active in this year</div>
+          <div class="bg-slate-100 flex justify-center py-2" *ngIf="length == 2">No more users to display</div>
+      </section>
+      <footer class="flex justify-center mt-5">
+          <div class="flex flex-col">
+            <form [formGroup]="pageSizeForm" class="form">
+                <label for="records" class="mr-3"
+                  >Items Per Page:</label
+                >
+                <select
+                  class="bg-slate-100 rounded-lg"
+                  name="records"
+                  id="records"
+                  formControlName="page"
+                  (change)="setPageSize()"
+                >
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                </select>
+              </form>
+              <div class="flex justify-center">
+                <a (click)="paginator('back')" class="hover:cursor-pointer">&laquo;</a>
+                <p class="inline mx-5">{{ pageNumber }}</p>
+                <a (click)="paginator('next')" class="hover:cursor-pointer">&raquo;</a>
+              </div>
+          </div>
+      </footer>
+</main>

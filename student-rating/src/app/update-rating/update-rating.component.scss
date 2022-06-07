@@ -1,0 +1,22 @@
+mat-card {
+    display: block;
+    background-color: rgb(250, 246, 246);
+    justify-content: center;
+    margin: 2rem;
+    padding: 1rem 4rem;
+}
+
+mat-form-field,
+label {
+  display: block;
+}
+
+.submitBtn {
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    margin-left: 3.2rem;
+}
+
+h2 {
+    margin-top: 1rem;
+}

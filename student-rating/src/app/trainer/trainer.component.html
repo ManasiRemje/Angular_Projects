@@ -1,0 +1,24 @@
+<main>
+  <header>
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <span class="app-name">InternGrad</span>
+        <span class="example-spacer"></span>
+        <a routerLink="/trainer/filter" routerLinkactive="active">
+            <button mat-button color="success">Filter</button>
+        </a>
+        <a routerLink="/trainer/rating" routerLinkactive="active">
+            <button mat-button color="success">Rating Form</button>
+        </a>
+        <a>
+            <button mat-button color="success" (click)="logout()">
+            Logout
+          </button>
+        </a>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </header>
+  <section>
+    <router-outlet></router-outlet>
+  </section>
+</main>

@@ -1,0 +1,99 @@
+<main>
+  <div
+    class="p-6 mt-8 w-[32rem] mx-auto shadow-lg flex items-center space-x-4 flex-col"
+  >
+    <h1 class="font-title text-4xl ml-4 text-purple-900">Activity Tracker</h1>
+    <h2 class="font-subTitle text-2xl mr-4 text-purple-800">Ready! Set! Go!</h2>
+    <h3 class="m-4 text-lg font-medium text-gray-700">Register Here</h3>
+    <hr class="w-[24rem]" />
+    <div class="mt-4">
+      <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <div>
+          <app-inputs
+            [required]="true"
+            for="name"
+            id="name"
+            type="text"
+            name="name"
+            [formControl]="name"
+            label="Name"
+          ></app-inputs>
+          <div
+            *ngIf="(name.invalid && name.touched) || name.dirty"
+            class="text-purple-400 text-xs"
+          >
+            <p *ngIf="name.errors?.['required']">*Name is required</p>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <app-inputs
+            [required]="true"
+            for="email"
+            id="email"
+            type="email"
+            name="email"
+            [formControl]="email"
+            label="Email"
+          ></app-inputs>
+          <div
+            *ngIf="(email.invalid && email.touched) || email.dirty"
+            class="text-purple-400 text-xs"
+          >
+            <p *ngIf="email.errors?.['required']">*Email is required</p>
+            <p *ngIf="email.errors?.['email']">*Enter a valid email</p>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <app-inputs
+            [required]="true"
+            for="password"
+            id="password"
+            type="password"
+            name="password"
+            [formControl]="password"
+            label="Password"
+          ></app-inputs>
+          <div
+            *ngIf="(password.invalid && password.touched) || password.dirty"
+            class="text-purple-400 text-xs"
+          >
+            <p *ngIf="password.errors?.['required']">*Password is required</p>
+            <p *ngIf="password.errors?.['minlength']">*Min 6 characters required</p>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <app-inputs
+            [required]="true"
+            for="confirmPassword"
+            id="confirmPassword"
+            type="password"
+            name="confirmPassword"
+            [formControl]="confirmPassword"
+            label="Confirm Password"
+          ></app-inputs>
+          <div
+            *ngIf="
+              (confirmPassword.invalid && confirmPassword.touched) ||
+              confirmPassword.dirty
+            "
+            class="text-purple-400 text-xs"
+          >
+            <p *ngIf="confirmPassword.errors?.['required']">
+              *Password is required
+            </p>
+            <p *ngIf="confirmPassword.errors?.['minlength']">
+              *Min 6 characters required
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <app-button>Sign Up!</app-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

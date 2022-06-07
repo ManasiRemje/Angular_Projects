@@ -1,0 +1,24 @@
+// @import url('https://fonts.googleapis.com/css2?family=Hurricane&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.app-name {
+    font-family: 'Lobster', cursive;
+    font-size: xx-large;
+}
+
+.app-name:hover {
+    cursor: pointer;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.mat-success {
+    color: #fff;
+}
+
+.mat-toolbar {
+    background: rgb(5, 62, 148);
+    color: #fff
+ }
